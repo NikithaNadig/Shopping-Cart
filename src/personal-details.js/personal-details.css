@@ -1,0 +1,19 @@
+.personal-details-container {
+    display: flex;
+    flex-direction: column;
+    margin-right: 40px;
+}
+.personal-details {
+    margin-bottom: 10px;
+}
+.personal-details-name {
+    font-weight: 700;
+}
+.date-picker-container {
+    font-weight: 700;
+    margin-bottom: 10px;
+    
+}
+.cal-icon {
+    background: url("./calendar-icon.svg") no-repeat ;
+}
