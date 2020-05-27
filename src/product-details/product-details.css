@@ -1,4 +1,6 @@
 .product-headings {
     display: grid;
-    grid-template-columns: repeat(6,1fr);
+    grid-template-columns: repeat(7,1fr);
+    justify-items: center;
+    grid-gap: 30px;
 }
