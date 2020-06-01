@@ -5,15 +5,20 @@
 }
 .personal-details {
     margin-bottom: 10px;
+    color: grey;
 }
 .personal-details-name {
     font-weight: 700;
+    color: black;
 }
 .date-picker-container {
     font-weight: 700;
     margin-bottom: 10px;
-    
 }
-.cal-icon {
-    background: url("./calendar-icon.svg") no-repeat ;
-}
+
+/* .ordered-date {
+    background: url("./calendar-icon.svg") no-repeat;
+
+} */
+
+

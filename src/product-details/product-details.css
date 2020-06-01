@@ -1,6 +1,24 @@
-.product-headings {
+.product-headings-container {
     display: grid;
     grid-template-columns: repeat(7,1fr);
     justify-items: center;
     grid-gap: 30px;
+    margin-top: 30px;
+}
+
+.product-headings {
+    font-size: 12px;
+    margin-left: 20px;
+}
+
+.add-product {
+    background-color: cornflowerblue;
+    color: white;
+    border-radius: 3px;
+    height: 30px;
+}
+
+.save-product {
+    float: right;
+    margin-top: 40px;
 }
