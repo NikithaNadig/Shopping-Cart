@@ -19,15 +19,12 @@ const PersonalDetails = ({
 
   const handleFieldChange = (e, key) => {
     const { name, value } = e.target;
-    const updateDom =document.getElementById(name);
-
+    const updateDom = document.getElementById(name);
     switch (name) {
-      case "last-name":
-          if(typeof updateDom !== 'undefined' && updateDom !== null) {
+      case "lastName":
         value.length < 7
           ? (updateDom.innerHTML = "Last name should contain atleast 7 letters")
           : (updateDom.innerHTML = "");
-          }
         break;
 
       case "state":
@@ -35,13 +32,13 @@ const PersonalDetails = ({
           ? (updateDom.innerHTML = "This feild cannot be empty")
           : (updateDom.innerHTML = "");
         break;
-      case "zip-code":
+      case "zipCode":
         RegexZip.test(value)
           ? (updateDom.innerHTML = "Five-digit Zip Code.")
           : (updateDom.innerHTML = "");
 
         break;
-      case "adddress 1":
+      case "adddress1":
         RegexAddr.test(value)
           ? (updateDom.innerHTML = "No special characters allowed")
           : (updateDom.innerHTML = "");
@@ -70,22 +67,28 @@ const PersonalDetails = ({
                   onChange={e => handleFieldChange(e, key)}
                   name={key}
                 />
+                <div id={key}>{}</div>
               </>
             );
           })}
       {Addressname === "Shipping Address" &&
         Object.keys(shippingAddress)
           .slice(0, 8)
-          .map(key => (
-            <input
-              type="text"
-              defaultValue={shippingAddress[key]}
-              className="personal-details"
-              size="40"
-              onChange={e => handleFieldChange(e, key)}
-              name={key}
-            />
-          ))}
+          .map(key => {
+            return (
+              <>
+                <input
+                  type="text"
+                  defaultValue={shippingAddress[key]}
+                  className="personal-details"
+                  size="40"
+                  onChange={e => handleFieldChange(e, key)}
+                  name={key}
+                />
+                <div id={key}>{}</div>
+              </>
+            );
+          })}
       <div>
         <div className="date-picker-container">{shippingDate}</div>
         {shippingDate === "Order Date" ? (

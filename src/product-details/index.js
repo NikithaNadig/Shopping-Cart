@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import ProductDetailsRow from "./product-details-row";
-import { productDetailsRow } from "../shopping-details";
+import { ShoppingDetails } from "../shopping-details";
 import "./product-details.css";
 
 const productDetailsHeading = [
@@ -12,25 +11,47 @@ const productDetailsHeading = [
   "Notes"
 ];
 const ProductDetails = () => {
-  const [addNewRow, updateAddNewRow] = useState(productDetailsRow);
+  const [addNewRow, updateAddNewRow] = useState(
+    ShoppingDetails.productDetailsRow
+  );
 
   const addNewProduct = () => {
+    console.log("addNewRow", addNewRow);
     updateAddNewRow([...addNewRow, {}]);
   };
 
- 
+  const handleDelete = item => {
+    addNewRow.splice(item, 1);
+    updateAddNewRow([...addNewRow]);
+  };
+
   return (
-    <div>
+    <>
       <div className="product-headings-container">
         {productDetailsHeading.map(i => (
           <h6 className="product-headings">{i}</h6>
         ))}
       </div>
-      <ProductDetailsRow />
-      <button className="add-product" onClick={addNewProduct}>
-        ADD PRODUCT
-      </button>
-    </div>
+        
+      {addNewRow.map((item, i) => {
+        return (
+          <form className="form-container">
+            <input type="number" defaultValue={item.productId} />
+            <input type="text" defaultValue={item.productName} />
+            <input type="number" defaultValue={item.qty} />
+            <input type="number" defaultValue={item.unitPrice} />
+            <input type="number" defaultValue={item.qty*item.unitPrice} />
+            <input type="text" />
+            <button
+              className="delete-btn"
+              onClick={() => {
+              handleDelete(i);
+              }}> DELETE </button>
+          </form>
+        );
+      })}
+      <button className="add-product" onClick={addNewProduct}>ADD PRODUCT</button>
+    </>
   );
 };
 
