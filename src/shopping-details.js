@@ -24,13 +24,13 @@ export const ShoppingDetails = {
 
   productDetailsRow: [
     {
-      productId: "1",
+      productId: 1,
       productName: "Shampoo",
       qty: 1,
       unitPrice: 230
     },
     {
-      productId: "2",
+      productId: 2,
       productName: "Conditioner",
       qty: 3,
       unitPrice: 160

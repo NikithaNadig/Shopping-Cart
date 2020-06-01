@@ -16,13 +16,14 @@ const ProductDetails = () => {
   );
 
   const addNewProduct = () => {
-    console.log("addNewRow", addNewRow);
     updateAddNewRow([...addNewRow, {}]);
   };
 
-  const handleDelete = item => {
-    addNewRow.splice(item, 1);
-    updateAddNewRow([...addNewRow]);
+  const handleDelete = itemToBeDeleted => {
+    const modifiedItems = addNewRow.filter(
+      (item, key) => key !== itemToBeDeleted
+    );
+    updateAddNewRow(modifiedItems);
   };
 
   return (
@@ -33,24 +34,30 @@ const ProductDetails = () => {
         ))}
       </div>
         
-      {addNewRow.map((item, i) => {
+      {addNewRow.map((item, key) => {
         return (
-          <form className="form-container">
+          <div className="form-container" key={item.productId}>
             <input type="number" defaultValue={item.productId} />
             <input type="text" defaultValue={item.productName} />
             <input type="number" defaultValue={item.qty} />
             <input type="number" defaultValue={item.unitPrice} />
-            <input type="number" defaultValue={item.qty*item.unitPrice} />
+            <input type="number" defaultValue={item.qty * item.unitPrice} />
             <input type="text" />
             <button
               className="delete-btn"
               onClick={() => {
-              handleDelete(i);
-              }}> DELETE </button>
-          </form>
+                handleDelete(key);
+              }}
+            >
+              {" "}
+              DELETE 
+            </button>
+          </div>
         );
       })}
-      <button className="add-product" onClick={addNewProduct}>ADD PRODUCT</button>
+      <button className="add-product" onClick={addNewProduct}>
+        ADD PRODUCT
+      </button>
     </>
   );
 };
